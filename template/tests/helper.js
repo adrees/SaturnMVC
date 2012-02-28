@@ -1,0 +1,5 @@
+/** * @copyright Sky Webadm Innovations
+ * @author webadm
+ * Requires MVC * */ // Common Dependencies load( "src/public/js/libs/jquery/jquery.js" );load( "src/public/js/libs/sky/mvc/mvc.js" );
+load( "src/public/js/libs/sky/util/logger.js" );
+var helper = function(){		//Cache selectors	var _testArea = $("#testArea");		var _removeChildNodes = function(ctrl){	  while (ctrl.childNodes[0]){	    ctrl.removeChild(ctrl.childNodes[0]);	  }	}		 /* Util methods */	var _helpers = {		getBlankController : function(){			return superiorController();		},		getBlankModel:function(){			return superiorModel();		},		getBlankView:function(){			var v = superiorView();			v.update = function(ev){} 			return superiorView();		},		appendHtml:function(html_str){			_testArea.empty();			_testArea.append( html_str );		}	}	return _helpers;	}();

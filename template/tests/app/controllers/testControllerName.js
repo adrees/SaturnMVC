@@ -1,0 +1,4 @@
+/** * @copyright Sky Webadm Innovations
+ * @author webadm
+ */
+// Common Dependencies Jquery and sky.mvc - helper class ( helper functions )load( "src/tests/javascript/unit/helper.js" );//Loading specific Dependenciesload( "src/public/js/@appName@/events/events.js" );load( "src/public/js/@appName@/controllers/@controllerName@.js" );module("@appName@.controllers.@controllerName@ - Initialising");test("init", function() {		try{		var instNoEv = @controllerName@( $ );	}catch(e){		ok(true, "should throw expected error at setup when no events");	}		try{		var instNoJQ = @controllerName@( null, events );	}catch(e){		ok(true, "should throw expected error at setup when no jquery");	}			var inst = @controllerName@( $, events );	ok( inst, "instance of exists");	equals( typeof inst, "object", "instance expected to be object" );		expect(4);});module("@appName@.controllers.@controllerName@ - ....");test("method", function() {		});

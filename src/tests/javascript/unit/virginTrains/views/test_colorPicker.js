@@ -1,0 +1,4 @@
+/** * @copyright Sky Webadm Innovations
+ * @author webadm
+ *  */
+// Common Dependencies Jquery and sky.mvc - helper class ( helper functions )load( "src/tests/javascript/unit/helper.js" );//Loading specific Dependenciesload( "src/public/js/virginTrains/events/events.js" );load( "src/public/js/virginTrains/views/colorPicker.js" );module("virginTrains.views.colorPicker - Initialising");test("init", function() {		try{		var instNoEv = colorPicker( $ );	}catch(e){		ok(true, "should throw expected error at setup when no events");	}		try{		var instNoJQ = colorPicker( null, events );	}catch(e){		ok(true, "should throw expected error at setup when no jquery");	}		var inst = colorPicker( $, events );	ok( inst, "instance of exists");	equals( typeof inst, "object", "instance expected to be object" );		expect(4);	});  module("virginTrains.views.colorPicker - APP_INIT");

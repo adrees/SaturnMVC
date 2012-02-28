@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<project name="MVC - Utils" basedir=".">
+	
+	<echo>-DviewName</echo>
+	
+	<!-- Properties file  -->
+	
+	<property name="APP_NAME" value="virginTrains"/>
+	<property name="APP_DIR" value="src/public/js/${APP_NAME}"/>
+	<property name="TEST_DIR" value="src/tests/javascript/unit/${APP_NAME}"/>	
+	<property name="TEMPLATE_DIR" value="template"/>
+
+	<target name="createView">
+		
+		<!-- create new view -->
+		<copy toFile="${APP_DIR}/views/${viewName}.js" file="${TEMPLATE_DIR}/js/app/views/viewName.js"/>
+		<replace file="${APP_DIR}/views/${viewName}.js" token="@viewName@" value="${viewName}" />
+		<replace file="${APP_DIR}/views/${viewName}.js" token="@appName@" value="${APP_NAME}" />
+		
+		<!-- create new controller -->
+		<property name="controllerName" value="${viewName}Controller"/>
+		<copy toFile="${APP_DIR}/controllers/${controllerName}.js" file="${TEMPLATE_DIR}/js/app/controllers/viewNameController.js"/>
+		<replace file="${APP_DIR}/controllers/${controllerName}.js" token="@controllerName@" value="${controllerName}" />
+		<replace file="${APP_DIR}/controllers/${controllerName}.js" token="@appName@" value="${APP_NAME}" />
+		
+		<!-- create test code -->
+		<!-- view -->
+		<property name="test_viewName" value="test_${viewName}"/>
+		<copy toFile="${TEST_DIR}/views/${test_viewName}.js" file="${TEMPLATE_DIR}/tests/app/views/testViewName.js"/>
+		<replace file="${TEST_DIR}/views/${test_viewName}.js" token="@test_viewName@" value="${test_viewName}" />
+		<replace file="${TEST_DIR}/views/${test_viewName}.js" token="@viewName@" value="${viewName}" />
+		<replace file="${TEST_DIR}/views/${test_viewName}.js" token="@appName@" value="${APP_NAME}" />
+		
+		<!-- controller -->
+		<property name="test_controllerName" value="test_${controllerName}"/>
+		<copy toFile="${TEST_DIR}/controllers/${test_controllerName}.js" file="${TEMPLATE_DIR}/tests/app/controllers/testControllerName.js"/>
+		<replace file="${TEST_DIR}/controllers/${test_controllerName}.js" token="@test_controllerName@" value="${test_controllerName}" />
+		<replace file="${TEST_DIR}/controllers/${test_controllerName}.js" token="@controllerName@" value="${controllerName}" />
+		<replace file="${TEST_DIR}/controllers/${test_controllerName}.js" token="@appName@" value="${APP_NAME}" />
+   
+    </target>
+
+</project>
